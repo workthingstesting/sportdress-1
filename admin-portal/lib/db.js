@@ -1,7 +1,6 @@
 import { neon } from '@neondatabase/serverless';
 
-if (!process.env.DATABASE_URL) {
-  console.warn("DATABASE_URL is not set in environment variables");
-}
+// Esto buscará automáticamente la variable en el archivo .env.local
+const sql = neon(process.env.DATABASE_URL);
 
-export const sql = neon(process.env.DATABASE_URL);
+export default sql;
