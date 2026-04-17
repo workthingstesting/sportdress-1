@@ -1,0 +1,426 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg-color: #f8fafc;
+    --surface-color: #ffffff;
+    --primary-blue: #2563eb;
+    --accent-blue: #1e40af;
+    --military-green: #4b5320;
+    --fuchsia: #d946ef;
+    --grey-dark: #1e293b;
+    --grey-medium: #64748b;
+    --grey-light: #e2e8f0;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+/* Typography Utility */
+h1, h2, h3, h4 {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Layout Parts */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.section-padding {
+    padding: 5rem 0;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+    display: block;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    transition: transform 0.3s ease-in-out, padding 0.3s ease, background 0.3s ease;
+}
+
+header.header-hidden {
+    transform: translateY(-100%);
+}
+
+header.scrolled {
+    padding: 0.5rem 0;
+    box-shadow: var(--shadow-sm);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    color: var(--primary-blue);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.nav-links a:hover {
+    color: var(--primary-blue);
+}
+
+.nav-actions {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-icon:hover {
+    color: var(--fuchsia);
+    transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+    background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('img/hero03.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.hero h1 span {
+    background: linear-gradient(to right, var(--primary-blue), var(--fuchsia));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2.5rem;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: var(--text-main);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-outline:hover {
+    background-color: var(--fuchsia);
+    border-color: var(--fuchsia);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.hero-image {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45%;
+    z-index: 1;
+}
+
+.hero-image img {
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+}
+
+/* Categories Section */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.category-card {
+    position: relative;
+    height: 500px;
+    border-radius: 24px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.category-card:hover img {
+    transform: scale(1.1);
+}
+
+.category-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.category-overlay h3 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.category-overlay .explore {
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.category-overlay .explore::after {
+    content: '→';
+    transition: var(--transition);
+}
+
+.category-card:hover .explore::after {
+    transform: translateX(5px);
+}
+
+/* Featured Section */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    color: var(--text-muted);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background: var(--surface-color);
+    border-radius: 20px;
+    padding: 1.5rem;
+    transition: var(--transition);
+    border: 1px solid var(--grey-light);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.product-image {
+    background: #f1f5f9;
+    border-radius: 15px;
+    height: 250px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-image img {
+    mix-blend-mode: multiply;
+}
+
+.product-info h4 {
+    margin-bottom: 0.5rem;
+}
+
+.product-price {
+    color: var(--primary-blue);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--military-green);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Mobile Nav */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .hero h1 { font-size: 3rem; }
+    .hero-image { display: none; }
+    .hero-content { max-width: 100%; text-align: center; }
+    .hero-btns { justify-content: center; }
+    .categories-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .nav-links { 
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--surface-color);
+        padding: 2rem;
+        box-shadow: var(--shadow-lg);
+        gap: 1.5rem;
+        text-align: center;
+    }
+    
+    .logo img { height: 40px; }
+    .hidden-header { display: block; }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle { display: block; }
+    .categories-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.5rem; }
+}
+
+/* Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s all ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
